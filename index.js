@@ -9,10 +9,10 @@ app.use(express.json());
 app.use('/api-docs',swaggerUI.serve, swaggerUI.setup(specs))
 app.use(router);
 
-app.use((req, res, next) => {
-    console.log(`Solicitud recibida: ${req.method} ${req.url}`);
-    next();
-});
+app.get('/', (req, res) => {
+    res.send('Bienvenido a la API Biblioteca. Visita /api-docs para la documentación.');
+  });
+  
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () =>{
